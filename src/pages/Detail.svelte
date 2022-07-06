@@ -1,1 +1,0 @@
-<p>Detail Page</p>

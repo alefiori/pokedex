@@ -1,0 +1,1 @@
+<p>Pokemon Detail Page</p>
