@@ -2,5 +2,14 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#FFCC01",
+    "titleBar.activeForeground": "#000000",
+    "titleBar.inactiveBackground": "#FFCC01",
+    "titleBar.inactiveForeground": "#000000",
+    "activityBar.activeBorder": "#FFCC01",
+    "activityBarBadge.background": "#FFCC01",
+    "activityBarBadge.foreground": "#000000"
+  }
 }
