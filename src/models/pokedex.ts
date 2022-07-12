@@ -3,13 +3,28 @@ export type Pokedex = {
   id: number
 }
 
-export type PokedexDetail = {
-  descriptions: Description[]
+export type PokedexDetailResponse = {
+  descriptions: Array<Description>
   id: number
   is_main_series: boolean
   name: string
-  names: Name[]
-  pokemon_entries: { entry_number: number }[]
+  names: Array<Name>
+  pokemon_entries: Array<PokemonEntry>
+}
+
+export type PokemonEntry = {
+  entry_number: number
+  pokemon_species: {
+    name: string
+    url: string
+  }
+}
+
+export type PokedexDetail = {
+  id: number
+  name: string
+  description: string
+  pokemonIds: Array<number>
 }
 
 export type Language = {

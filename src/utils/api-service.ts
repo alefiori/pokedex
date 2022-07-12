@@ -1,6 +1,6 @@
-import type { Pokedex, PokedexDetail } from 'src/models'
+import type { Pokedex, PokedexDetail, PokedexDetailResponse } from 'src/models'
 import type { Pokemon } from 'src/models/pokemon'
-import { BASE_API_URL } from '../constants'
+import { BASE_API_URL } from '.'
 
 export const apiService = {
   getPokedexList: async (): Promise<Array<Pokedex>> => {
@@ -16,8 +16,21 @@ export const apiService = {
     return Promise.reject(new Error('No pokedex available'))
   },
 
-  getPokedexDetail: async (id: number): Promise<PokedexDetail> =>
-    await (await fetch(`${BASE_API_URL}pokedex/${id}`)).json(),
+  getPokedexDetail: async (id: number): Promise<PokedexDetail> => {
+    const response: PokedexDetailResponse = await (
+      await fetch(`${BASE_API_URL}pokedex/${id}`)
+    ).json()
+    return {
+      id: response.id,
+      description: response.descriptions.find(
+        ({ language }) => language.name === 'en'
+      ).description,
+      name: response.name,
+      pokemonIds: response.pokemon_entries.map(({ pokemon_species }) =>
+        getIdFromUrl(pokemon_species.url)
+      ),
+    }
+  },
 
   getPokemon: async (id: number): Promise<Pokemon> =>
     await (await fetch(`${BASE_API_URL}pokemon/${id}`)).json(),
