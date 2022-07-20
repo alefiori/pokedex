@@ -12,10 +12,6 @@ export const pokemonActions: PokemonActions = {
     store.update((data) => ({
       ...data,
       currentPokemonPage: data.currentPokemonPage + 1,
-      pokemonPages: {
-        ...data.pokemonPages,
-        [data.currentPokemonPage + 1]: pokemonList,
-      },
       pokemonList: [...data.pokemonList, ...pokemonList],
     }))
   },

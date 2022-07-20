@@ -1,12 +1,20 @@
 <script lang="ts">
   import type { Pokemon } from 'src/models'
   import { onMount } from 'svelte'
+  import { store } from '../store'
   import { apiService } from '../utils'
 
-  export let id: number
-  let pokemon: Pokemon
+  export let id: string
 
-  onMount(async () => (pokemon = await apiService.getPokemon(id)))
+  let pokemon: Pokemon = $store.pokemonList.find(
+    (pokemon) => pokemon.id === +id
+  )
+
+  onMount(async () => {
+    if (!pokemon) {
+      pokemon = await apiService.getPokemon(+id)
+    }
+  })
 </script>
 
 Pokemon Details

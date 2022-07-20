@@ -27,7 +27,7 @@
   }
 
   $: if (!!elementRef) {
-    infiniteScroll(fetchNextPage, elementRef)
+    setTimeout(() => infiniteScroll(fetchNextPage, elementRef), 100)
   }
 </script>
 
