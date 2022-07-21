@@ -31,8 +31,8 @@
   }
 </script>
 
-Select Pokedex:
 <Select
+  title="Select Pokedex"
   elements={$store.pokedexList}
   onValueChange={pokedexActions.selectPokedex}
 />

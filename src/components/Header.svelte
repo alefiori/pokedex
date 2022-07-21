@@ -1,5 +1,5 @@
 <script lang="ts">
-  import logo from '../assets/pokemon.png'
+  import logo from '../assets/images/pokemon.png'
 </script>
 
 <header>

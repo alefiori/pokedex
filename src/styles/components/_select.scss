@@ -1,0 +1,40 @@
+.select {
+  width: 15rem;
+  position: relative;
+  text-transform: capitalize;
+  &__title {
+    font-weight: 700;
+  }
+  &__options {
+    max-height: 40vh;
+    border: 1px solid $color-gray-light;
+    margin-top: 0.6rem;
+    border-radius: 1rem;
+    position: absolute;
+    background-color: white;
+    overflow-y: scroll;
+  }
+  &__option {
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 15rem;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba($color-secondary-light, 0.2);
+      color: $color-secondary;
+    }
+  }
+  &__selected-option {
+    border: 1px solid $color-secondary;
+    box-shadow: 0.5rem 0.5rem 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__icon {
+    width: 1.5rem;
+  }
+}
