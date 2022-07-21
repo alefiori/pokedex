@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { Pokedex } from 'src/models'
   import { onMount } from 'svelte'
   import { Link } from 'svelte-navigator'
+  import Card from '../components/Card.svelte'
+  import Select from '../components/Select.svelte'
   import { pokedexActions, pokemonActions, store } from '../store'
   import { ELEMENTS_PER_PAGE, infiniteScroll } from '../utils'
 
-  let selectedPokedex: Pokedex
   let elementRef: HTMLElement
 
   onMount(async () => {
@@ -31,29 +31,18 @@
   }
 </script>
 
-<p>Pokemon List Page</p>
 Select Pokedex:
-<select
-  name="pokedex"
-  bind:value={selectedPokedex}
-  on:change={() => pokedexActions.selectPokedex(selectedPokedex)}
->
-  {#each $store.pokedexList as pokedex}
-    <option value={pokedex}>
-      {pokedex.name}
-    </option>
-  {/each}
-</select>
+<Select
+  elements={$store.pokedexList}
+  onValueChange={pokedexActions.selectPokedex}
+/>
 {#if !!$store.selectedPokedex}
-  <ul>
-    {#each $store.pokemonList as pokemon}
-      <Link to="pokemon-detail/{pokemon.id}">
-        <li>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-          {pokemon.name}
-        </li>
+  <div>
+    {#each $store.pokemonList as { id, name, sprites: { front_default } }}
+      <Link to="pokemon-detail/{id}">
+        <Card imageUrl={front_default} title={name} />
       </Link>
     {/each}
     <div bind:this={elementRef} />
-  </ul>
+  </div>
 {/if}
