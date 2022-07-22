@@ -37,9 +37,9 @@
   onValueChange={pokedexActions.selectPokedex}
 />
 {#if !!$store.selectedPokedex}
-  <div>
+  <div class="grid">
     {#each $store.pokemonList as { id, name, sprites: { front_default } }}
-      <Link to="pokemon-detail/{id}">
+      <Link class='nostyle' to="pokemon-detail/{id}">
         <Card imageUrl={front_default} title={name} />
       </Link>
     {/each}

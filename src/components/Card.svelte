@@ -3,7 +3,7 @@
   export let title: string
 </script>
 
-<div>
-  <img src={imageUrl} alt={title} />
-  <h2>{title}</h2>
+<div class="card">
+  <img class="card__image" src={imageUrl} alt={title} />
+  <div class="card__title">{title}</div>
 </div>
