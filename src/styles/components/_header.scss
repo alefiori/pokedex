@@ -1,7 +1,18 @@
+header {
+  position: fixed;
+  height: $header-height;
+  width: 100%;
+  background-color: $color-primary-light;
+  z-index: 1;
+}
+
 .logo {
   width: 10%;
+  height: 100%;
   margin: auto;
   img {
     width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }

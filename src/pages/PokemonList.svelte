@@ -2,11 +2,10 @@
   import { onMount } from 'svelte'
   import { Link } from 'svelte-navigator'
   import Card from '../components/Card.svelte'
+  import InfiniteScroll from '../components/InfiniteScroll.svelte'
   import Select from '../components/Select.svelte'
   import { pokedexActions, pokemonActions, store } from '../store'
-  import { ELEMENTS_PER_PAGE, infiniteScroll } from '../utils'
-
-  let elementRef: HTMLElement
+  import { ELEMENTS_PER_PAGE } from '../utils'
 
   onMount(async () => {
     if (!$store.pokedexList?.length) {
@@ -25,10 +24,6 @@
       pokemonActions.addPokemonPage(pokemonIdList)
     }
   }
-
-  $: if (!!elementRef) {
-    setTimeout(() => infiniteScroll(fetchNextPage, elementRef), 100)
-  }
 </script>
 
 <Select
@@ -39,10 +34,10 @@
 {#if !!$store.selectedPokedex}
   <div class="grid">
     {#each $store.pokemonList as { id, name, sprites: { front_default } }}
-      <Link class='nostyle' to="pokemon-detail/{id}">
+      <Link class="nostyle" to="pokemon-detail/{id}">
         <Card imageUrl={front_default} title={name} />
       </Link>
     {/each}
-    <div bind:this={elementRef} />
+    <InfiniteScroll fetchFunction={fetchNextPage} />
   </div>
 {/if}
