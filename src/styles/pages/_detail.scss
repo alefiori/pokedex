@@ -1,0 +1,8 @@
+.detail {
+  margin: 2rem;
+  &__name {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 3rem;
+  }
+}

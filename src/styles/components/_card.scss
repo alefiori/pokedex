@@ -5,6 +5,8 @@
   border-radius: 1rem;
   box-shadow: 0.5rem 0.5rem 1rem;
   &__image {
+    max-height: 10rem;
+    object-fit: cover;
   }
   &__title {
     text-transform: capitalize;

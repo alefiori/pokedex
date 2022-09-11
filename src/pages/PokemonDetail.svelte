@@ -17,9 +17,13 @@
   })
 </script>
 
-Pokemon Details
 {#if !!pokemon}
-  <div>
-    Name: {pokemon.name}
+  <div class="detail">
+    <div class="detail__name">{pokemon.name}</div>
+    <img
+      src={pokemon.sprites.front_default}
+      alt={pokemon.name}
+      class="detail__image"
+    />
   </div>
 {/if}
