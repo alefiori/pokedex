@@ -4,7 +4,6 @@ import PokemonList from '../pages/PokemonList.svelte'
 
 export const ROUTES: Array<PageRoute> = [
   {
-    path: '/',
     component: PokemonList,
   },
   {

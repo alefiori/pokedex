@@ -1,4 +1,4 @@
 export type PageRoute = {
-  path: string
+  path?: string
   component: Function
 }
